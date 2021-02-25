@@ -29,6 +29,9 @@ jobs:
 
       # Checkout & install haxe
       - uses: actions/checkout@v2
+        with:
+            persist-credentials: false
+            token: ${{ secrets.GITHUB_TOKEN }}
       - uses: krdlab/setup-haxe@v1
         with:
           haxe-version: 4.1.4
@@ -70,8 +73,6 @@ jobs:
             run: cd app && npm run pack-win
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-        
 
       - uses: actions/upload-artifact@v2
         with:
