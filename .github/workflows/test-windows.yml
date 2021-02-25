@@ -61,12 +61,19 @@ jobs:
           node-version: '14'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: cd app && npm install
-      - run: cd app && npm run compile
-      - run: cd app && npm run pack-prepare
-      - run: cd app && npm run pack-win
+
+      - name: pack
+        run: |
+            run: cd app && npm install
+            run: cd app && npm run compile
+            run: cd app && npm run pack-prepare
+            run: cd app && npm run pack-win
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+        
 
       - uses: actions/upload-artifact@v2
         with:
           name: dist
-          path: redist/**
+          path: app/redist/**
