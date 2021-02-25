@@ -67,10 +67,10 @@ jobs:
 
       - name: pack
         run: |
-            run: cd app && npm install
-            run: cd app && npm run compile
-            run: cd app && npm run pack-prepare
-            run: cd app && npm run pack-win
+            cd app && npm install
+            cd app && npm run compile
+            cd app && npm run pack-prepare
+            cd app && npm run pack-win
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
